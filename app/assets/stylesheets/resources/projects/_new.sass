@@ -1,0 +1,123 @@
+[data-controller="projects"][data-action="new__"]
+  #loading
+    display: none
+  #page_content
+    .container
+      .start_content
+        +grid(16)
+        padding-top: 15px
+        .accept
+          input, label
+            display: inline
+        .alert-heading
+          font-family: 'Lato-Bold'
+        .reward_title
+          padding-top: 20px
+          h3
+            font-family: 'Lato-Bold'
+            font-size: 16px
+            color: rgba(black, 0.8)
+          p
+            font-family: 'Titillium Web'
+            font-size: 13px
+            color: rgba(black, 0.6)
+            line-height: 130%
+            padding-top: 5px
+            padding-bottom: 10px
+        .title
+          +grid(16)
+          +alpha
+          padding-bottom: 40px
+          h1
+            color: $text_green
+            font-family: "Lato-Regular"
+            font-size: 28px
+            padding: 5px 0
+          h2
+            color: rgba($text_green, 0.7)
+            font-family: 'Titillium Web'
+            font-size: 18px
+        .bootstrap-alert
+          .alert
+            background: $green_seedr url($images_path+'stripes_green.png') top left repeat
+            color: $text_dark
+            border: 1px solid $green_seedr
+      #project_warning
+        .alert.alert-warning
+          background: $green_seedr url($images_path+'stripes_green.png') top left repeat
+          border: 1px solid $green_seedr
+          color: $text_dark
+          font-family: "Lato-Regular"
+          font-size: 13px
+          line-height: 21px
+          height: 20px
+          padding: 10px 10px 10px 40px
+          width: 92%
+          a
+            color: $green_sec
+      .formtastic.project
+        .accept
+          padding-top: 20px
+          padding-bottom: 20px
+          input
+            display: inline
+          label
+            display: inline
+        label
+          font-family: 'Lato-Regular'
+          font-size: 15px
+          color: rgba(black, 0.8)
+        .input-prepend.permalink
+          .add-on
+            margin-top: -2px
+            font-family: 'Lato-Regular'
+            font-size: 15px
+            color: white
+            text-shadow: 0 0 0
+            border: 1px solid
+            border-color: $green_seedr
+        input[type="text"]
+          width: 99%
+          &.permalink
+            width: 85%
+        textarea
+          width: 99%
+          height: 180px
+          &#project_headline
+            height: 80px
+        .inline-hints
+          font-size: 13px
+          font-family: 'Titillium Web'
+          line-height: 130%
+          color: rgba(black, 0.6)
+          padding-bottom: 20px
+      .reward
+        textarea
+          height: 80px !important
+      .remove_reward_wrapper
+        a
+          position: absolute
+          margin-left: 853px
+          margin-top: 150px !important
+          font-family: 'Titillium Web'
+          font-size: 15px
+      #add_reward_wrapper
+        a
+          float: left
+          font-family: 'Titillium Web'
+          font-size: 15px
+      .reward
+        padding-top: 10px
+        padding-bottom: 10px
+        margin-bottom: 10px
+        .left
+          float: left
+          width: 30%
+          margin-right: 5%
+          input
+            width: 99%
+        .right
+          float: left
+          width: 30%
+          input
+            width: 99%

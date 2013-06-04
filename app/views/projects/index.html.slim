@@ -1,0 +1,24 @@
+= render :partial => 'recommended_header'
+#page_content
+  .container
+    .main
+      
+      .selected_projects.list
+        .list_title
+          .title
+            h2= t('sections.selection.title')
+        .projects
+          = render :partial => 'project', :locals => {:project => @first_project, :custom_class => 'first' } if @first_project
+          = render :partial => 'project', :locals => {:project => @second_project } if @second_project
+          = render :partial => 'project', :locals => {:project => @third_project, :custom_class => 'last' } if @third_project
+        .explore_link
+          hr
+          = link_to t('main.links.selected'), explore_path()+"#recommended"
+
+    .sidebar
+      .content
+        .facebook
+          h3= t('sidebar.titles.facebook')
+          .fb-like-box data-href="#{Configuration['facebook_url']}" data-send="false" data-width="220" data-height="800" data-show-faces="true" data-stream="false" data-header="false" data-border-color="#fff"
+
+    .clearfix

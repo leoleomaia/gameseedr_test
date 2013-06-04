@@ -1,0 +1,54 @@
+= content_for :title, t('.title')
+#page_content
+  .container
+    .static_default
+      .title
+        h1= t('.title')
+        h2= t('.subtitle')
+        h3= t('.introduction')
+      ul.team
+        li.first
+          ul
+            li
+              = image_tag('catarse/team_leo.jpg')
+              .nametxt= t('.name_one')
+              span= t('.title_one')
+              p= t('.text_one')
+            li
+              = image_tag('catarse/team_leo.jpg')
+              .nametxt= t('.name_two')
+              span= t('.title_two')
+              p= t('.text_two')
+            li
+              = image_tag('catarse/team_leo.jpg')
+              .nametxt= t('.name_three')
+              span= t('.title_three')
+              p= t('.text_three')
+            li.last
+              = image_tag('catarse/team_leo.jpg')
+              .nametxt= t('.name_four')
+              span= t('.title_four')
+              p= t('.text_four')
+        li.second
+          ul
+            li
+              = image_tag('catarse/team_leo.jpg')
+              .nametxt= t('.name_five')
+              span= t('.title_five')
+              p= t('.text_five')
+            li
+              = image_tag('catarse/team_leo.jpg')
+              .nametxt= t('.name_six')
+              span= t('.title_six')
+              p= t('.text_six')
+            li
+              = image_tag('catarse/team_leo.jpg')
+              .nametxt= t('.name_seven')
+              span= t('.title_seven')
+              p= t('.text_seven')
+            li.last
+              = image_tag('catarse/team_leo.jpg')
+              .nametxt= t('.name_eight')
+              span= t('.title_eight')
+              p= t('.text_eight')
+    .clearfix

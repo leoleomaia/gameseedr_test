@@ -1,0 +1,117 @@
+#header
+  +grid-container
+  +grid-system(16)
+  padding: 17px 10px 0 10px
+  margin: 0 auto 30px
+  display: block
+  .logo
+    +grid(4)
+    +alpha
+    margin-right: 30px
+    margin-top: -10px
+    height: 70px
+    width: 230px
+    border: none
+    background: url($images_path+"logo_lado.png") left top no-repeat
+    text-indent: -9999em
+  nav
+    a
+      display: inline-block
+      font-family: 'Titillium Web'
+      text-decoration: none
+    &.actions
+      +grid(3)
+      margin-top: 20px
+      display: inline
+      width: 130px
+      a
+        color: $green_seedr
+        font-size: 18px
+        margin-right: 27px
+        display: block
+        &:last-child
+          margin-right: 0
+        &:hover
+          text-decoration: underline
+        &.explore
+          background: url($images_path+"explore_icon.png") left 3px no-repeat
+          text-indent: 30px
+        &.submit_project
+          background: url($images_path+"submit_project_icon.png") left 4px no-repeat
+          text-indent: 30px
+          color: $blue_seedr
+        strong
+          display: block
+        span
+          display: block
+          font-size: 12px
+    &.menu
+      +grid(3)
+      margin-top: 20px
+      width: 150px
+      a
+        font-family: 'Titillium Web'
+        text-transform: lowercase
+        color: $green_seedr
+        font-size: 14px
+        margin-right: 12px
+        &.my_profile_link
+          width: 130px
+          display: block
+          float: right
+          margin-right: 0
+          img.profile_picture
+            border: 1px $green_bg
+            +box-shadow(rgba(black, 0.3) 1px 1px 2px)
+            +transition(all, 0.5s)
+            position: relative
+            float: left
+            margin-top: -14px
+            margin-right: 5px
+
+            &:hover
+              +box-shadow(rgba(black, 0.6) 1px 1px 2px inset)
+          .current_user_name
+            float: left
+            margin-right: 5px
+          .dropdown_arrow
+            float: left
+            position: relative
+            margin-top: 7px
+        &:last-child
+          margin-right: none
+        &:hover
+          color: $green_seedr
+      .dropdown
+        margin-left: 20px
+        margin-top: 30px
+        li
+          .divider
+            width: 90%
+  .search
+    +grid(4)
+    margin-top: 18px
+    margin-left: 0px
+    form
+      width: 220px
+      height: 22px
+      +border-radius(8px)
+      border: 1px $minimal_gryn solid
+      // +box-shadow(rgba(black, 0.1) 1px 1px 2px)
+      background: white
+      input[type="text"]
+        border: none
+        width: 190px
+        float: left
+        margin-left: 3px
+        margin-top: 3px
+        &:focus
+          outline: none
+      input[type="submit"]
+        background: url($images_path+"search_submit15x15.png") left top no-repeat
+        width: 15px
+        height: 15px
+        border: none
+        text-indent: -9999em
+        float: right
+        margin: 3px 5px 0 0px

@@ -1,0 +1,13 @@
+#recommended_header
+  .resume_about
+    .bootstrap-form
+      = form_tag(guidelines_path, :method => :get, :id => 'guidelines_form') do
+        fieldset
+          .bootstrap-twitter
+            .button.first
+              = link_to t('.guidelines_submit'), guidelines_start_path, :class=>'btn_explore'
+            .button.second
+              = link_to t('.guidelines_playing'), guidelines_start_path, :class=>'btn_explore'
+            .button.third
+              = link_to t('.guidelines'), guidelines_start_path, :class=>'btn_explore'
+  .clearfix

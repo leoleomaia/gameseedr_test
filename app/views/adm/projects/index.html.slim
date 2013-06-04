@@ -1,0 +1,109 @@
+#page_content
+  .container
+    .title
+      h1= t('.title')
+      h2
+        strong= "#{@total_projects} "
+        = t('.total_projects')
+
+    .filters
+      .bootstrap-form
+        = form_tag adm_projects_path, method: :get, class: 'form-horizontal' do |f|
+          fieldset
+            .input
+              = label_tag :by_id, t('.id')
+              = text_field_tag :by_id, params[:by_id], class: 'input-small'
+
+            .input
+              = label_tag :pg_search, t('.project')
+              = text_field_tag :pg_search, params[:pg_search]
+            .input
+              = label_tag :user_name_contains, t('.user')
+              = text_field_tag :user_name_contains, params[:user_name_contains]
+            .input
+              = label_tag :order_table, t('.order_table')
+              select#order_goal name="order_table"
+                option value=''
+                option value='asc'= t('.order_asc')
+                option value='desc'= t('.order_desc')
+
+            .bootstrap-twitter
+              .input.submit
+                = submit_tag t('.submit'), class: 'btn btn-success'
+          fieldset
+            .input.total_results
+              #total_results
+                = pluralize_without_number @projects.count, t('found_singular'), t('found_plural')
+                strong= @projects.count
+                = pluralize_without_number(@projects.count, t('project_singular'), t('project_plural')).downcase
+      .clearfix
+    .data-table
+      = paginate @projects
+      - if @projects.empty?
+        = t('.no_backers')
+      - else
+        .bootstrap-twitter
+          table.table.table-striped
+            thead
+              tr
+                th style="width: 200px;"
+                  = t('.name')
+                th= t('.category')
+                th= t('.user_id')
+                th= t('.goal')
+                th= t('.pledged')
+                th= t('.total_backs')
+                th= t('.recommended')
+                th= t('.online_date')
+                th= t('.expires_at')
+                th= t('.state')
+                th
+            tbody
+              - @projects.each do |project|
+                tr id=project.id class=cycle("even", "odd")
+                  td= link_to project.name, project_path(project)
+                  td= project.category
+                  td= best_in_place [:adm, project], :user_id, method: :put, type: :input
+                  td= best_in_place [:adm, project], :goal, method: :put, type: :input, display_as: :display_goal
+                  td= "#{project.display_pledged} (#{project.progress}%)"
+                  td= project.total_backers
+                  td.recommended= best_in_place [:adm, project], :recommended, method: :put, type: :checkbox, collection: ['Não', 'Sim']
+                  td= project.online_date.strftime('%d/%m/%Y') if project.online_date
+                  td= project.display_expires_at
+                  td
+                    - if project.online?
+                      span.label.label-online= project.state
+                    - elsif project.successful?
+                      span.label.label-success= project.state
+                    - elsif project.failed? or project.rejected?
+                      span.label.label-important= project.state
+                    - elsif project.waiting_funds?
+                      span.label.label-warning= project.state
+                    - else
+                      span.label= project.state
+                  td
+                    .btn-group
+                      = link_to 'javascript:void(0);', :class => 'btn btn-mini dropdown-toggle', :"data-toggle"=> "dropdown" do
+                        b.caret
+                      ul.dropdown-menu
+                        - if project.can_approve?
+                          li
+                            = link_to approve_adm_project_path(project), :method => :put do
+                              i.icon-ok
+                              = 'Aprovar!'
+
+                        - if project.can_reject?
+                          li
+                            = link_to reject_adm_project_path(project), :method => :put  do
+                              i.icon-ban-circle
+                              = 'Rejeitar!'
+
+                        - if project.can_push_to_draft?
+                          li
+                            = link_to  push_to_draft_adm_project_path(project), :method => :put  do
+                              i.icon-trash
+                              = 'Mandar para DRAFT!'
+      = paginate @projects
+  .clearfix
+
+
